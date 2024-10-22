@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Date Difference Calculation</title>
+</head>
+<body>
+    <h1>Date Difference Calculation</h1>
+    <input type="date" id="date1" value="2020-01-01">
+    <input type="date" id="date2" value="2020-01-15">
+    <button onclick="calculateDateDifference()">Calculate</button>
+    <p id="result"></p>
+
+    <script>
+        function calculateDateDifference() {
+            const date1 = new Date(document.getElementById("date1").value);
+            const date2 = new Date(document.getElementById("date2").value);
+            const difference = Math.abs(date2 - date1);
+            const days = Math.floor(difference / (1000 * 3600 * 24));
+
+            document.getElementById("result").innerText = `The difference is ${days} days.`;
+        }
+    </script>
+</body>
+</html>

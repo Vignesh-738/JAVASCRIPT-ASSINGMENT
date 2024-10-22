@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Combo Box Operations</title>
+</head>
+<body>
+    <h1>Combo Box Operations</h1>
+    <select id="comboBox"></select>
+    <input type="text" id="newItem" placeholder="New Item">
+    <button onclick="addItem()">Add Item</button>
+    <button onclick="removeItem()">Remove Item</button>
+    <p id="selectedItem"></p>
+
+    <script>
+        function addItem() {
+            const item = document.getElementById("newItem").value;
+            const comboBox = document.getElementById("comboBox");
+            const option = document.createElement("option");
+            option.text = item;
+            comboBox.add(option);
+            document.getElementById("newItem").value = '';
+        }
+
+        function removeItem() {
+            const comboBox = document.getElementById("comboBox");
+            comboBox.remove(comboBox.selectedIndex);
+        }
+
+        document.getElementById("comboBox").addEventListener("change", function() {
+            document.getElementById("selectedItem").innerText = this.value;
+        });
+    </script>
+</body>
+</html>

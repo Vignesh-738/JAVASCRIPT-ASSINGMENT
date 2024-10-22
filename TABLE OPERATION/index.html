@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Table Operations</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <h1>Table Operations</h1>
+    <table id="table">
+        <tr>
+            <th>Column 1</th>
+            <th>Column 2</th>
+        </tr>
+        <tr>
+            <td>Cell 1</td>
+            <td>Cell 2</td>
+        </tr>
+    </table>
+    <select id="borderWidth">
+        <option value="1">1px</option>
+        <option value="2">2px</option>
+        <option value="3">3px</option>
+    </select>
+    <input type="color" id="bgColor" onchange="changeTableColor()">
+    <input type="color" id="textColor" onchange="changeTableColor()">
+    <select id="align">
+        <option value="left">Left</option>
+        <option value="center">Center</option>
+        <option value="right">Right</option>
+    </select>
+
+    <script>
+        document.getElementById("borderWidth").addEventListener("change", function() {
+            const table = document.getElementById("table");
+            table.style.borderWidth = this.value + "px";
+        });
+
+        function changeTableColor() {
+            const table = document.getElementById("table");
+            const bgColor = document.getElementById("bgColor").value;
+            const textColor = document.getElementById("textColor").value;
+
+            table.style.backgroundColor = bgColor;
+            table.style.color = textColor;
+        }
+
+        document.getElementById("align").addEventListener("change", function() {
+            const table = document.getElementById("table");
+            table.style.textAlign = this.value;
+        });
+    </script>
+</body>
+</html>

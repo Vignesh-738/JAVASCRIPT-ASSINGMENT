@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Paragraph Text Operations</title>
+</head>
+<body>
+    <h1>Paragraph Text Operations</h1>
+    <p id="paragraph">This is a sample paragraph.</p>
+    <select id="fontType">
+        <option value="Arial">Arial</option>
+        <option value="Times New Roman">Times New Roman</option>
+        <option value="Courier">Courier</option>
+    </select>
+    <select id="fontSize">
+        <option value="12">12px</option>
+        <option value="14">14px</option>
+        <option value="16">16px</option>
+    </select>
+    <input type="color" id="textColor" onchange="changeTextColor()">
+
+    <script>
+        document.getElementById("fontType").addEventListener("change", function() {
+            const paragraph = document.getElementById("paragraph");
+            paragraph.style.fontFamily = this.value;
+        });
+
+        document.getElementById("fontSize").addEventListener("change", function() {
+            const paragraph = document.getElementById("paragraph");
+            paragraph.style.fontSize = this.value + "px";
+        });
+
+        function changeTextColor() {
+            const paragraph = document.getElementById("paragraph");
+            const textColor = document.getElementById("textColor").value;
+            paragraph.style.color = textColor;
+        }
+    </script>
+</body>
+</html>

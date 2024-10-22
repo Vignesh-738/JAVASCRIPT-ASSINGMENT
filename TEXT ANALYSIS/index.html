@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text Analysis</title>
+</head>
+<body>
+    <h1>Text Analysis</h1>
+    <textarea id="textInput" rows="5" cols="30"></textarea>
+    <button onclick="analyzeText()">Analyze</button>
+    <p id="results"></p>
+    <input type="color" id="bgColor" onchange="changeColor()">
+    <input type="color" id="textColor" onchange="changeColor()">
+
+    <script>
+        function analyzeText() {
+            const text = document.getElementById("textInput").value;
+            const letters = text.match(/[a-zA-Z]/g) || [];
+            const digits = text.match(/[0-9]/g) || [];
+            const specialChars = text.match(/[^a-zA-Z0-9]/g) || [];
+
+            document.getElementById("results").innerHTML = `
+                Letters: ${letters.length}<br>
+                Digits: ${digits.length}<br>
+                Special Characters: ${specialChars.length}
+            `;
+        }
+
+        function changeColor() {
+            const bgColor = document.getElementById("bgColor").value;
+            const textColor = document.getElementById("textColor").value;
+            const textInput = document.getElementById("textInput");
+
+            textInput.style.backgroundColor = bgColor;
+            textInput.style.color = textColor;
+        }
+    </script>
+</body>
+</html>

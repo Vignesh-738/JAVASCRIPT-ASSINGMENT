@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Password Generation</title>
+</head>
+<body>
+    <h1>Password Generation</h 1>
+    <button onclick="generatePassword()">Generate Password</button>
+    <p id="password"></p>
+
+    <script>
+        function generatePassword() {
+            const password = generateRandomPassword();
+            document.getElementById("password").innerText = password;
+        }
+
+        function generateRandomPassword() {
+            const uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
+            const digits = "0123456789";
+            const specialChars = "!@#$%^&*()_+-=";
+
+            let password = "";
+
+            // Add at least 2 uppercase letters
+            for (let i = 0; i < 2; i++) {
+                password += getRandomChar(uppercaseLetters);
+            }
+
+            // Add at least 1 digit
+            password += getRandomChar(digits);
+
+            // Fill the rest with random characters
+            while (password.length < 8) {
+                const charType = Math.floor(Math.random() * 4);
+                switch (charType) {
+                    case 0:
+                        password += getRandomChar(uppercaseLetters);
+                        break;
+                    case 1:
+                        password += getRandomChar(lowercaseLetters);
+                        break;
+                    case 2:
+                        password += getRandomChar(digits);
+                        break;
+                    case 3:
+                        password += getRandomChar(specialChars);
+                        break;
+                }
+            }
+
+            // Shuffle the password to avoid the first characters always being uppercase
+            password = shuffleString(password);
+
+            return password;
+        }
+
+        function getRandomChar(charSet) {
+            return charSet.charAt(Math.floor(Math.random() * charSet.length));
+        }
+
+        function shuffleString(str) {
+            const arr = str.split("");
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr.join("");
+        }
+    </script>
+</body>
+</html>

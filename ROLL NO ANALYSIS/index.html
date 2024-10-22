@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Roll Number Analysis</title>
+</head>
+<body>
+    <h1>Roll Number Analysis</h1>
+    <input type="text" id="rollNumber" placeholder="Enter roll number">
+    <button onclick="analyzeRollNumber()">Analyze</button>
+    <p id="result"></p>
+
+    <script>
+        function analyzeRollNumber() {
+            const rollNumber = document.getElementById("rollNumber").value;
+            const regex = /^ES(\d{2})([A-Z]{2})(\d{2})$/;
+            const match = regex.exec(rollNumber);
+            const result = document.getElementById("result");
+
+            if (match) {
+                const year = match[1];
+                const branch = match[2];
+                let yearOfStudy;
+
+                if (year >= 19 && year <= 20) {
+                    yearOfStudy = "Third Year";
+                } else if (year >= 20 && year <= 21) {
+                    yearOfStudy = "Final Year";
+                } else {
+                    yearOfStudy = "Invalid year.";
+                }
+
+                result.innerText = `Year of Study: ${yearOfStudy}, Branch: ${branch}`;
+            } else {
+                result.innerText = "Invalid roll number.";
+            }
+        }
+    </script>
+</body>
+</html>
